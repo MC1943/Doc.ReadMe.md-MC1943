@@ -1,0 +1,145 @@
+Fb-Connector
+Configure your info.plist and project settings.
+Find the .plist file in the Supporting Files folder in your Xcode Project.
+1. Right-click your .plist file and choose "Open As Source Code".
+2. Copy & Paste the XML snippet into the body of your file ( <dict>...</dict> ).
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb4807236149383381</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>4807236149383381</string>
+<key>FacebookDisplayName</key>
+<string>MikelArtz&Designs</string>
+
+Fb-AppSwitch
+ If you use any of the Facebook dialogs (e.g., Login, Share, App Invites, etc.) that can perform an app switch to Facebook apps, your application's .plist also need to handle this.
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>fbapi</string>
+  <string>fb-messenger-api</string>
+  <string>fbauth2</string>
+  <string>fbshareextension</string>
+</array>
+
+Start Over
+Skip Quick Start
+
+Quick Start for iOS
+
+MikelArtz&Designs
+Remove
+Download	Add to Xcode	Configure	Bundle Identifier	App Events	Test	Finished
+Download and Install the Facebook SDK for iOS
+Download the SDK and unzip the archive to ~/Documents/FacebookSDK
+Download SDK
+Add the Facebook SDK to your Xcode Project
+From the Facebook SDK folder, drag the folder Bolts.framework, FBSDKCoreKit.Framework, FBSDKLoginKit.Framework, FBSDKShareKit.Framework into your Xcode Projects Framework folder.
+Open Xcode's "Build Settings" tab in your project and add the Facebook SDK folder's path to "Framework Search Paths" setting.
+Configure your info.plist and project settings
+Find the .plist file in the Supporting Files folder in your Xcode Project.
+1. Right-click your .plist file and choose "Open As Source Code".
+2. Copy & Paste the XML snippet into the body of your file ( <dict>...</dict> ).
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb4807236149383381</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>4807236149383381</string>
+<key>FacebookDisplayName</key>
+<string>MikelArtz&Designs</string>
+3. If you use any of the Facebook dialogs (e.g., Login, Share, App Invites, etc.) that can perform an app switch to Facebook apps, your application's .plist also need to handle this.
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>fbapi</string>
+  <string>fb-messenger-api</string>
+  <string>fbauth2</string>
+  <string>fbshareextension</string>
+</array>
+4. Add a compiler flag to your build settings for compatibility with the Facebook iOS SDK.
+1. Go to the Project Navigator in Xcode and select your project to see project settings.
+2. Select Other Linker Flags for editing.
+3. Add the flag -ObjC to Other Linker Flags for all build targets.
+Supply us with your Bundle Identifier
+Find your bundle Identifier in your Xcode Project's iOS Application Target.
+Bundle Identifier
+4807236149383381
+Remove
+107.77.199.11
+Remove
+107.77.196.96
+Remove
+107.77.196.116
+Remove
+
+
+Next
+Track App Installs and App Opens
+App Events let you measure installs on your mobile app ads, create high value audiences for targeting, and view analytics including user demographics. To log an app activation event, first, import the Facebook SDK in your AppDelegate.m file:
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+Next, add the following to your app delegate:
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [FBSDKAppEvents activateApp];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
+  return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                         openURL:url
+                                               sourceApplication:sourceApplication
+                                                      annotation:annotation];
+}
+When people install or engage with your app, you'll see this data reflected in your app's Insights dashboard.
+Does your app support in-app purchases?
+YES
+
+NO	Log in-app purchase events automatically on iOS (recommended)
+Turning this on logs all in-app purchase events automatically. This feature needs version 3.22 of the iOS Facebook SDK or newer.
+Notice: When this setting is turned on, you should stop logging in-app purchases manually or else they'll be duplicated. Learn more
+Let's test out your integration
+In one of your app's ViewController.m files, add:
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+Next, add the following code to the viewDidLoad method:
+FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+loginButton.center = self.view.center;
+[self.view addSubview:loginButton];
+If you haven't done so already, add the following to your app's AppDelegate.m file:
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+- (BOOL)application:(UIApplication *)application
+             openURL:(NSURL *)url
+   sourceApplication:(NSString *)sourceApplication
+          annotation:(id)annotation {
+   return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                         openURL:url
+                                               sourceApplication:sourceApplication
+                                                      annotation:annotation];
+}
+Now compile and run your app. You should see a Facebook Login button. If you can login to your app, the integration is successful.
+Next Steps
+Congratulations! You have added the Facebook SDK to your project. You are now in the next stage in integrating your app with Facebook. What do you want to do next? Skip to Developer Dashboard or Documentation
+
+app with Facebook. What do you want to do next? Skip to Developer Dashboard or Documentation
+Share
+Add the share dialog to let people share your content with their friends.	Login
+Add Facebook Login to let people quickly and easily login to your app.	Ads
+Grow your app with Facebook Ads for Apps.	Monetize
+Monetize your mobile app with Facebook Ads.
+Finished!
