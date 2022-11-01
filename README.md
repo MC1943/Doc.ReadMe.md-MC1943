@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @MC1943
+- 👋 Hi, MC1943
 - 👀 I’m interested in ...🧑‍🎨📊📈📆
 - 🌱 I’m currently learning ... [MC1943](@GitHub.com)
 - 💞️ I’m looking to collaborate on ... [Discord](@Discord.com)
