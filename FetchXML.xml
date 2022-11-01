@@ -1,0 +1,1 @@
+<fetch version="1.0" mapping="logical"><entity name="msdyn_analysisjob"><attribute name="msdyn_analysisjobid" /><attribute name="msdyn_name" /><attribute name="createdon" /><order attribute="msdyn_name" descending="false" /><filter type="and"><condition attribute="statecode" operator="eq" value="1" /></filter></entity></fetch>
